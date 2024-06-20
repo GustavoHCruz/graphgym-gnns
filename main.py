@@ -39,4 +39,4 @@ if log_level == 'info':
 cfg.params = params_count(model)
 if log_level == 'info':
   logging.info('Num parameters: %s', cfg.params)
-train(model, datamodule, logger=log_level=='prod')
+train(model, datamodule, logger=True)

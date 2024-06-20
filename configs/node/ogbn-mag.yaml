@@ -58,7 +58,7 @@ dataset:
   encoder: false
 
   # Name of general encoder
-  # encoder_name: 'db'
+  # encoder_name: paper
 
   # If add batchnorm after general encoder
   encoder_bn: false
@@ -67,7 +67,7 @@ dataset:
   node_encoder: false
 
   # Name of node encoder
-  # node_encoder_name: 'Atom'
+  # node_encoder_name: Atom
 
   # If add batchnorm after node encoder
   node_encoder_bn: false
@@ -92,7 +92,7 @@ train:
   batch_size: 16
 
   # Sampling strategy for a train loader
-  sample: full_batch
+  sampler: full_batch
 
   # Minibatch node
   sample_node: false
@@ -132,7 +132,7 @@ model:
   loss_fun: cross_entropy
 
   # Size average: mean, sum
-  size_avarage: mean
+  size_average: mean
 
   # Threshold for binary classification
   thresh: 0.5
