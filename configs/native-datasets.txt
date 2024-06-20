@@ -1,0 +1,20 @@
+Node Classification:
+- CiteSeer
+- Cora
+- PubMed
+- Reddit - dataset não encontrado
+- OGBN-Arxiv
+- OGBN-Products - sem memória
+
+Edge Classification:
+- ogbl-collab
+- OGBN-Proteins - erro de input must be a tensor
+- PPI (Protein-Protein Interaction) - erro loader
+
+Graph Classification:
+- ogbg-molhiv
+- ogbg-molpcba - erro de dimensão
+- proteins - dataset não encontrado
+- MNIST - erro na divisão do dataset, bug não resolvido no github (https://github.com/pyg-team/pytorch_geometric/issues/4230)
+
+Formatos: PyG, OGB (e outro da documentação)
