@@ -212,4 +212,4 @@ optim:
   # momentum: 0.9
 
   # Maximal number of epochs
-  max_epoch: 10
+  max_epoch: 1000

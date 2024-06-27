@@ -46,7 +46,7 @@ dataset:
   transductive: true
 
   # Split ratio of dataset
-  split: [0.8, 0.1, 0.1]
+  split: [0.7, 0.1, 0.2]
 
   # Whether to shuffle the graphs for splitting
   shuffle_split: True
@@ -82,14 +82,14 @@ dataset:
   edge_encoder_bn: false
 
   # Dimension of the encoded features
-  encoder_dim: 128
+  encoder_dim: 16
 
   # Dimension for edge feature. Updated by the real dim of the dataset
-  edge_dim: 128
+  edge_dim: 16
 
 train:
   # Total graph mini-batch size
-  batch_size: 16
+  batch_size: 8
 
   # Sampling strategy for a train loader
   sampler: full_batch
@@ -104,19 +104,19 @@ train:
   skip_train_eval: false
 
   # Evaluate model on test data every eval period epochs
-  eval_period: 20
+  eval_period: 200
 
   # Enabling checkpoint, set False to disable and save I/O
-  enable_ckpt: false
+  enable_ckpt: true
 
   # Save model checkpoint every checkpoint period epochs
-  # ckpt_period: 100
+  ckpt_period: 400
 
   # Resume training from the latest checkpoint in the output directory
-  auto_resume: false
+  auto_resume: true
 
   # The epoch to resume. -1 means resume the latest epoch.
-  # epoch_resume: -1
+  epoch_resume: -1
 
   # Clean checkpoint: only keep the last ckpt
   ckpt_clean: true
@@ -135,26 +135,26 @@ model:
   size_average: mean
 
   # Threshold for binary classification
-  thresh: 0.5
+  thresh: 0.3
 
 gnn:
   # Prediction head. Use # task by default
   head: default
 
   # Number of layers before message passing
-  layers_pre_mp: 0
+  layers_pre_mp: 1
 
   # Number of layers for message passing
-  layers_mp: 2
+  layers_mp: 1
 
   # Number of layers after message passing
-  layers_post_mp: 1
+  layers_post_mp: 0
 
   # Hidden layer dim. Automatically set if train.auto_match = True
-  dim_inner: 128
+  dim_inner: 8
 
   # Type of graph conv: generalconv, gcnconv, sageconv, gatconv, ...
-  layer_type: generalconv
+  layer_type: gatconv
 
   # Stage type: 'stack', 'skipsum', 'skipconcat'
   stage_type: stack
@@ -169,10 +169,10 @@ gnn:
   act: relu
 
   # Dropout
-  dropout: 0.0
+  dropout: 0.1
 
   # Aggregation type: add, mean, max
-  agg: add
+  agg: max
 
   # Normalize adj
   normalize_adj: false
@@ -184,7 +184,7 @@ gnn:
   # self_msg: concat
 
   # Number of attention heads
-  att_heads: 1
+  att_heads: 0
 
   # After concat attention heads, add a linear layer
   att_final_linear: false
@@ -206,10 +206,10 @@ optim:
   base_lr: 0.01
 
   # L2 regularization
-  weight_decay: 5e-4
+  weight_decay: 5e-3
 
   # SGD momentum
   # momentum: 0.9
 
   # Maximal number of epochs
-  max_epoch: 10
+  max_epoch: 400
